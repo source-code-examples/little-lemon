@@ -1,0 +1,16 @@
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+/* Optional: Responsive Anpassung */
+@media (max-width: 768px) {
+  footer {
+    padding: 15px;
+    font-size: 0.8rem;
+  }
+}

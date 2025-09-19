@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -34,5 +34,57 @@
   }
   to {
     transform: rotate(360deg);
+  }
+} */
+
+/* App.css */
+.App {
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* Header, Main, Footer */
+  min-height: 100vh;
+}
+
+/* Optional: Styling für die einzelnen Bereiche */
+header {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+}
+
+main {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+footer {
+  background-color: #eee;
+  text-align: center;
+  padding: 10px;
+}
+
+/* 📱 Responsive Anpassungen */
+@media (max-width: 768px) {
+  main {
+    padding: 15px;
+  }
+
+  header,
+  footer {
+    padding: 15px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .App {
+    grid-template-rows: auto auto auto; /* Falls du z. B. Header/Main/Footer untereinander willst */
+  }
+
+  main {
+    padding: 10px;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
   }
 }
