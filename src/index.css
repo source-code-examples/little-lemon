@@ -1,18 +1,3 @@
-/* body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
- */
-
 /* CSS Reset */
 *,
 *::before,
@@ -55,4 +40,40 @@ a {
 ul,
 ol {
   list-style: none;
+}
+
+:root {
+  --dark-green: #495e57;
+  --lemon-yellow: #f4ce14;
+  --peach: #ee9972;
+  --skin: #fbdabb;
+  --white: #edefee;
+  --black: #333333;
+  --pure-white: #ffffff;
+  --pure-black: #000000;
+  --gray: #d9d9d9;
+
+  --headline-size: 32px;
+}
+
+p {
+  font-family: "Karla", sans-serif;
+  font-weight: 400; /* Regular */
+  text-transform: none; /* Sentence case */
+  font-size: calc(var(--headline-size) * 0.65);
+  line-height: 1.6;
+  color: var(--black);
+}
+
+button {
+  font-family: "Karla", sans-serif;
+  font-weight: 500;
+  font-size: 18pt;
+  text-transform: none;
+  background-color: var(--lemon-yellow);
+  color: var(--black);
+  padding: 12px 24px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
 }
