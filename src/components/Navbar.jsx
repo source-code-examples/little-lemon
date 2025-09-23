@@ -1,5 +1,6 @@
 import React from "react";
 import "./Header.css";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const navbarLinks = [
@@ -16,15 +17,15 @@ const Navbar = () => {
       <ul>
         {navbarLinks.map((link) => (
           <li key={link}>
-            <a
-              href={
+            <Link
+              to={
                 link === "Home"
                   ? "/"
                   : `/${link.toLowerCase().replace(" ", "-")}`
               }
             >
               {link}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
