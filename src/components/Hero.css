@@ -1,0 +1,144 @@
+.hero-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* grid-template-columns: minmax(300px, 1fr) minmax(250px, 0.8fr); */
+  align-items: center;
+  padding: 0 20vw;
+  gap: 20px;
+  background-color: var(--dark-green);
+  /* max-width: 1200px;
+  margin: 0 auto; */
+}
+
+.hero-title {
+  color: var(--lemon-yellow);
+}
+
+.hero-location,
+.hero-teaser {
+  color: var(--white);
+}
+
+.hero-reserve-button {
+  max-width: 200px;
+  font-weight: bold;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hero-section img {
+  width: 100%;
+  max-width: 300px;
+  justify-self: end;
+  border: 2px solid var(--white);
+  border-radius: 16px;
+  transform: translateY(25%);
+  z-index: 2;
+}
+
+#loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(50, 50, 50, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+#loading-overlay.hidden {
+  display: none;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 6px solid var(--lemon-yellow);
+  border-top: 6px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+body.fade-out {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+@media (max-width: 735px) {
+  .hero-section {
+    padding: 10px 10vw;
+  }
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  .hero-location {
+    font-size: 1.3rem;
+  }
+  .hero-teaser {
+    font-size: 1.1rem;
+  }
+  .hero-reserve-button {
+    font-size: 1.1rem;
+  }
+  .hero-section img {
+    width: 80%;
+  }
+}
+
+@media (max-width: 630px) {
+  .hero-title {
+    font-size: 1.7rem;
+  }
+  .hero-location {
+    font-size: 1.2rem;
+  }
+  .hero-teaser {
+    font-size: 1rem;
+  }
+  .hero-reserve-button {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 535px) {
+  .hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    /* padding-top: 20px; */
+  }
+
+  .hero-reserve-button {
+    align-self: center;
+  }
+
+  .hero-content {
+    order: 2;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .hero-section img {
+    order: 1;
+    width: 60%;
+    max-width: 300px;
+    margin-bottom: 100px;
+    margin-top: -40px;
+  }
+}
