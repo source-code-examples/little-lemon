@@ -1,7 +1,7 @@
 import React from "react";
 import Hero from "../components/Hero.jsx";
 import Hightlights from "../components/Highlights.jsx";
-import Testimonials from "../components/Testimonials";
+import Testimonials from "../components/Testimonials.jsx";
 import About from "../components/About";
 import "./Home.css";
 
