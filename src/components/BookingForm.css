@@ -1,0 +1,87 @@
+/* BookingForm.css */
+main {
+  /* background-color: var(--pure-white); */
+
+  margin-bottom: -10px;
+
+  /* background-color: #f5f5f0;
+  background-image: radial-gradient(#dcdcd4 3px, transparent 0.5px);
+  background-size: 20px 20px; */
+
+  background-color: #f5f5f0;
+  background-image: radial-gradient(circle, #fdd835 4px, transparent 5px),
+    radial-gradient(circle, #fdd835 4px, transparent 5px);
+  /* background-image: radial-gradient(
+      circle,
+      #fdd835 4px,
+      rgba(0, 0, 0, 0.05) 5px
+    ),
+    radial-gradient(circle, #fdd835 4px, rgba(0, 0, 0, 0.05) 5px); */
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+}
+
+.booking-form {
+  display: grid;
+  /* gap: 5px; */
+  max-width: 450px;
+  margin: 50px auto;
+  padding: 50px;
+  background-color: var(--dark-green);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", sans-serif;
+}
+
+.booking-form label {
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--white);
+}
+
+.booking-form input,
+.booking-form select {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  transition: border-color 0.2s ease;
+}
+
+.booking-form input:focus,
+.booking-form select:focus {
+  border-color: #ffb88c;
+  outline: none;
+}
+
+.booking-form input[type="submit"] {
+  /* background-color: #007bff; */
+  background-color: var(--peach);
+  /* color: var(--pure-white); */
+  /* text-shadow: -1px -1px 0 var(--black), -1px 1px 0 var(--black); */
+  border: none;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 16px;
+  transition: background-color 1s ease, color 1s ease, text-shadow 1s ease;
+}
+
+.booking-form input[type="submit"]:hover {
+  /* background-color: #0056b3; */
+  /* background-color: #007bff; */
+  background-color: var(--skin);
+  color: var(--black);
+  text-shadow: none;
+  /* text-shadow: -2px -2px 0 var(--pure-white), -2px 2px 0 var(--pure-white),
+    2px -2px 0 var(--pure-white), 2px 2px 0 var(--pure-white); */
+}
+
+/* .booking-form .error {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: -10px;
+} */
