@@ -12,8 +12,8 @@ const Hero = () => {
           Fresh Mediterranean cuisine with a touch of heart.
         </p>
 
-        <div id="loading-overlay" class="hidden">
-          <div class="spinner"></div>
+        <div id="loading-overlay" className="hidden">
+          <div className="spinner"></div>
         </div>
 
         <button

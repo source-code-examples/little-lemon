@@ -1,40 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./BookingForm.css";
 
-const BookingForm = () => {
+const BookingForm = ({ availableTimes, dispatch }) => {
+  console.log("availableTimes:", availableTimes);
+
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [guests, setGuests] = useState(1);
+  const [guestError, setGuestError] = useState("");
   const [occasion, setOccasion] = useState("Birthday");
-  const [availableTimes] = useState([
-    "17:00",
-    "18:00",
-    "19:00",
-    "20:00",
-    "21:00",
-    "22:00",
-  ]);
-  //   const [guestError, setGuestError] = useState("");
 
-  //   const handleGuestsChange = (e) => {
-  //     const value = Number(e.target.value);
-  //     setGuests(value);
+  useEffect(() => {
+    if (availableTimes.length > 0) {
+      setTime(availableTimes[0]);
+    }
+  }, [availableTimes]);
 
-  //     if (value < 1 || value > 10 || isNaN(value)) {
-  //       setGuestError("Bitte geben Sie eine Gästeanzahl zwischen 1 und 10 ein.");
-  //     } else {
-  //       setGuestError("");
-  //     }
-  //   };
+  const handleGuestsChange = (e) => {
+    const value = Number(e.target.value);
+    setGuests(value);
+
+    if (value < 1 || value > 10 || isNaN(value)) {
+      setGuestError("Please enter a number of guests between 1 and 10.");
+    } else {
+      setGuestError("");
+    }
+  };
+
+  const handleDateChange = (e) => {
+    const selectedDate = e.target.value;
+    setDate(selectedDate);
+    dispatch({ type: "UPDATE_TIMES", date: selectedDate });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if (guestError) {
-    //   alert("Bitte korrigieren Sie die Fehler im Formular.");
-    //   return;
-    // }
     console.log("Reservation:", { date, time, guests, occasion });
     // Here you could call e.g. an API
+    // fetch("/api/reservations", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({ date, time, guests, occasion }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     alert("Reservation confirmed!");
+    //   })
+    //   .catch((err) => {
+    //     alert("Something went wrong.");
+    //   });
   };
 
   return (
@@ -45,7 +59,7 @@ const BookingForm = () => {
         id="booking-date"
         name="date"
         value={date}
-        onChange={(e) => setDate(e.target.value)}
+        onChange={handleDateChange}
       />
 
       <label htmlFor="booking-time">Choose Time:</label>
@@ -55,9 +69,9 @@ const BookingForm = () => {
         value={time}
         onChange={(e) => setTime(e.target.value)}
       >
-        {availableTimes.map((availableTime) => (
-          <option key={availableTime} value={availableTime}>
-            {availableTime}
+        {availableTimes.map((time) => (
+          <option key={time} value={time}>
+            {time}
           </option>
         ))}
       </select>
@@ -70,14 +84,13 @@ const BookingForm = () => {
         step={1}
         min={1}
         max={10}
-        placeholder={1}
+        // placeholder={1}
         value={guests}
-        // onChange={handleGuestsChange}
-        onChange={(e) => setGuests(Number(e.target.value))}
+        onChange={handleGuestsChange}
       />
-      {/* {guestError && (
+      {guestError && (
         <span style={{ color: "red", fontSize: "0.8em" }}>{guestError}</span>
-      )} */}
+      )}
 
       <label htmlFor="occasion">Occasion:</label>
       <select

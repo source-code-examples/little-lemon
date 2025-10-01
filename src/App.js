@@ -3,8 +3,8 @@ import "./App.css";
 import Footer from "./components/Footer.jsx";
 import Header from "./components/Header.jsx";
 import Home from "./pages/HomePage.jsx";
-// import Reservation from "./pages/Reservation.jsx";
-import BookingPage from "./pages/BookingPage.jsx";
+
+import Main from "./Main.jsx";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/reservations" element={<BookingPage />} />
+            <Route path="/reservations" element={<Main />} />
           </Routes>
           <Footer />
         </div>
