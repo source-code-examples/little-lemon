@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./BookingForm.css";
 
-const BookingForm = ({ availableTimes, dispatch }) => {
+const BookingForm = ({ availableTimes, dispatch, onSubmit }) => {
   console.log("availableTimes:", availableTimes);
 
   const [date, setDate] = useState("");
@@ -35,7 +35,12 @@ const BookingForm = ({ availableTimes, dispatch }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Reservation:", { date, time, guests, occasion });
+    const reservation = { date, time, guests, occasion };
+    console.log("Reservation:", reservation);
+
+    if (onSubmit) {
+      onSubmit(reservation); // ✅ important for testing
+    }
     // Here you could call e.g. an API
     // fetch("/api/reservations", {
     //   method: "POST",

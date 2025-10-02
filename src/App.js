@@ -8,18 +8,16 @@ import Main from "./Main.jsx";
 
 function App() {
   return (
-    <>
-      <Router>
-        <div className="App">
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/reservations" element={<Main />} />
-          </Routes>
-          <Footer />
-        </div>
-      </Router>
-    </>
+    <Router>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/reservations" element={<Main />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

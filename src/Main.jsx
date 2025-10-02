@@ -2,12 +2,12 @@ import React, { useReducer } from "react";
 import BookingPage from "./pages/BookingPage";
 
 // Initial times
-const initializeTimes = () => {
+export const initializeTimes = () => {
   return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
 };
 
 // Reducer function
-const updateTimes = (state, action) => {
+export const updateTimes = (state, action) => {
   // const selectedDate = action.date;
   // Here could come in later the API logic
   // For now: return same times
