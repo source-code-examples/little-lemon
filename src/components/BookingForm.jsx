@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./BookingForm.css";
+import { submitAPI } from "../api";
 
 const BookingForm = ({ availableTimes, dispatch, onSubmit }) => {
   console.log("availableTimes:", availableTimes);
@@ -33,27 +34,29 @@ const BookingForm = ({ availableTimes, dispatch, onSubmit }) => {
     dispatch({ type: "UPDATE_TIMES", date: selectedDate });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const reservation = { date, time, guests, occasion };
     console.log("Reservation:", reservation);
 
+    try {
+      const success = await submitAPI(reservation);
+      if (success) {
+        alert("Reservation confirmed!");
+      } else {
+        alert("Reservation failed. Please try another time.");
+      }
+      if (onSubmit) {
+        onSubmit(reservation);
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      alert("Something went wrong.");
+    }
+
     if (onSubmit) {
       onSubmit(reservation); // ✅ important for testing
     }
-    // Here you could call e.g. an API
-    // fetch("/api/reservations", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({ date, time, guests, occasion }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     alert("Reservation confirmed!");
-    //   })
-    //   .catch((err) => {
-    //     alert("Something went wrong.");
-    //   });
   };
 
   return (

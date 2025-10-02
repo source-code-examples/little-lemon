@@ -3,7 +3,6 @@ import "./App.css";
 import Footer from "./components/Footer.jsx";
 import Header from "./components/Header.jsx";
 import Home from "./pages/HomePage.jsx";
-
 import Main from "./Main.jsx";
 
 function App() {

@@ -1,63 +1,31 @@
 import React, { useReducer } from "react";
 import BookingPage from "./pages/BookingPage";
+import { fetchAPI } from "./api";
 
-// Initial times
+// Initializes the time values ​​for today's date using the global API.
 export const initializeTimes = () => {
-  return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+  const today = new Date();
+  return fetchAPI(today); // Fetches all available times
 };
 
-// Reducer function
+// Reducer function to update the times when a date is selected
 export const updateTimes = (state, action) => {
-  // const selectedDate = action.date;
-  // Here could come in later the API logic
-  // For now: return same times
-  return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+  if (action.type === "UPDATE_TIMES") {
+    const selectedDate = new Date(action.date);
+    return fetchAPI(selectedDate); // API call with date
+  }
+  return state;
 };
 
 const Main = () => {
-  // const [availableTimes, setAvailableTimes] = useState([
-  //   "17:00",
-  //   "18:00",
-  //   "19:00",
-  //   "20:00",
-  //   "21:00",
-  //   "22:00",
-  // ]);
-
-  const [availableTimes, dispatch] = useReducer(
-    updateTimes,
-    [],
-    initializeTimes
-  );
+  const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
 
   return (
     <main>
+      {/* <h1>Reserve a Table</h1> */}
       <BookingPage availableTimes={availableTimes} dispatch={dispatch} />
     </main>
   );
 };
 
 export default Main;
-
-// import React from "react";
-// import Hero from "./Hero";
-// import Hightlights from "./Hightlights";
-// import Testimonials from "./Testimonials";
-// import About from "./About";
-// import "./Main.css";
-
-// const Main = () => {
-//   return (
-//     <>
-//       <main>
-//         <br />
-//         <Hero />
-//         <Hightlights />
-//         <Testimonials />
-//         <About />
-//       </main>
-//     </>
-//   );
-// };
-
-// export default Main;
