@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./BookingForm.css";
-import { submitAPI } from "../api";
+// import { submitAPI } from "../api";
+// import { useNavigate } from "react-router-dom";
 
-const BookingForm = ({ availableTimes, dispatch, onSubmit }) => {
+const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
   console.log("availableTimes:", availableTimes);
+
+  // const navigate = useNavigate();
 
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
@@ -39,24 +42,32 @@ const BookingForm = ({ availableTimes, dispatch, onSubmit }) => {
     const reservation = { date, time, guests, occasion };
     console.log("Reservation:", reservation);
 
+    // try {
+    //   const success = await submitAPI(reservation);
+    //   if (success) {
+    //     // alert("Reservation confirmed!");
+    //     navigate("/confirmation");
+    //   } else {
+    //     alert("Reservation failed. Please try another time.");
+    //   }
+    //   if (onSubmit) {
+    //     onSubmit(reservation); // Gives the data to submitForm
+    //   }
+    // } catch (error) {
+    //   console.error("Submission error:", error);
+    //   alert("Something went wrong.");
+    // }
+
     try {
-      const success = await submitAPI(reservation);
-      if (success) {
-        alert("Reservation confirmed!");
-      } else {
-        alert("Reservation failed. Please try another time.");
-      }
-      if (onSubmit) {
-        onSubmit(reservation);
-      }
+      await submitForm(reservation); // Gives the data to the main component
     } catch (error) {
       console.error("Submission error:", error);
       alert("Something went wrong.");
     }
 
-    if (onSubmit) {
-      onSubmit(reservation); // ✅ important for testing
-    }
+    // if (onSubmit) {
+    //   onSubmit(reservation); // Important for testing
+    // }
   };
 
   return (
