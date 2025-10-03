@@ -1,24 +1,29 @@
 import React, { useState, useEffect } from "react";
 import "./BookingForm.css";
-// import { submitAPI } from "../api";
-// import { useNavigate } from "react-router-dom";
 
 const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
   console.log("availableTimes:", availableTimes);
-
-  // const navigate = useNavigate();
 
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [guests, setGuests] = useState(1);
   const [guestError, setGuestError] = useState("");
   const [occasion, setOccasion] = useState("Birthday");
+  const [isFormValid, setIsFormValid] = useState(false);
 
   useEffect(() => {
     if (availableTimes.length > 0) {
       setTime(availableTimes[0]);
     }
   }, [availableTimes]);
+
+  /* Check whether all fields are valid */
+  useEffect(() => {
+    const isValid =
+      date && time && guests >= 1 && guests <= 10 && !guestError && occasion;
+
+    setIsFormValid(isValid);
+  }, [date, time, guests, guestError, occasion]); //  Function is executed automatically when one of the fields changes
 
   const handleGuestsChange = (e) => {
     const value = Number(e.target.value);
@@ -42,39 +47,21 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
     const reservation = { date, time, guests, occasion };
     console.log("Reservation:", reservation);
 
-    // try {
-    //   const success = await submitAPI(reservation);
-    //   if (success) {
-    //     // alert("Reservation confirmed!");
-    //     navigate("/confirmation");
-    //   } else {
-    //     alert("Reservation failed. Please try another time.");
-    //   }
-    //   if (onSubmit) {
-    //     onSubmit(reservation); // Gives the data to submitForm
-    //   }
-    // } catch (error) {
-    //   console.error("Submission error:", error);
-    //   alert("Something went wrong.");
-    // }
-
     try {
       await submitForm(reservation); // Gives the data to the main component
     } catch (error) {
       console.error("Submission error:", error);
       alert("Something went wrong.");
     }
-
-    // if (onSubmit) {
-    //   onSubmit(reservation); // Important for testing
-    // }
   };
 
   return (
     <form className="booking-form" onSubmit={handleSubmit}>
       <label htmlFor="booking-date">Choose Date:</label>
       <input
-        type="date"
+        type="date" // HTML5 validation
+        required // Mandatory field
+        min={new Date().toISOString().split("T")[0]} // No date in the past
         id="booking-date"
         name="date"
         value={date}
@@ -87,6 +74,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
         id="booking-time"
         value={time}
         onChange={(e) => setTime(e.target.value)}
+        required
       >
         {availableTimes.map((time) => (
           <option key={time} value={time}>
@@ -100,9 +88,10 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
         type="number"
         id="guests"
         name="guests"
-        step={1}
-        min={1}
-        max={10}
+        step={1} // Change only by a whole number
+        min={1} // At least one guest
+        max={10} // Maximum ten guests
+        required // Mandatory field
         // placeholder={1}
         value={guests}
         onChange={handleGuestsChange}
@@ -117,12 +106,21 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
         id="occasion"
         value={occasion}
         onChange={(e) => setOccasion(e.target.value)}
+        required
       >
         <option value="Birthday">Birthday</option>
         <option value="Anniversary">Anniversary</option>
       </select>
 
-      <input type="submit" value="Make your Reservation" />
+      <input
+        type="submit"
+        value="Make your Reservation"
+        disabled={!isFormValid} // Only active if the form is valid
+        style={{
+          cursor: isFormValid ? "pointer" : "not-allowed",
+          backgroundColor: isFormValid ? "var(--lemon-yellow)" : "",
+        }}
+      />
     </form>
   );
 };

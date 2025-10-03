@@ -57,8 +57,8 @@ main {
 
 .booking-form input[type="submit"] {
   /* background-color: #007bff; */
-  background-color: var(--peach);
-  /* color: var(--pure-white); */
+  background-color: var(--skin);
+  /* color: var(--pure-black); */
   /* text-shadow: -1px -1px 0 var(--black), -1px 1px 0 var(--black); */
   border: none;
   font-size: 18px;
@@ -73,7 +73,7 @@ main {
 .booking-form input[type="submit"]:hover {
   /* background-color: #0056b3; */
   /* background-color: #007bff; */
-  background-color: var(--skin);
+  background-color: var(--peach);
   color: var(--black);
   text-shadow: none;
   /* text-shadow: -2px -2px 0 var(--pure-white), -2px 2px 0 var(--pure-white),
