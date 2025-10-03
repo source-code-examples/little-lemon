@@ -11,7 +11,7 @@ const BookingPage = ({ availableTimes, dispatch }) => {
   const submitForm = (formData) => {
     const success = submitAPI(formData);
     if (success) {
-      navigate("/confirmation", { state: formData }); // Redirect to the confirmation page; submit data
+      navigate("/confirmation", { state: formData }); // Redirect to the confirmation page; submit datanp
     } else {
       alert("Reservation failed. Please try another time.");
     }

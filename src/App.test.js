@@ -2,6 +2,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import BookingForm from "./components/BookingForm";
 import { initializeTimes, updateTimes } from "./Main.jsx";
+import { fetchAPI } from "./api.js";
 
 // test("renders learn react link", () => {
 //   render(<App />);
@@ -32,34 +33,36 @@ test("Renders the submit button", () => {
   expect(buttonElement).toBeInTheDocument();
 });
 
-test("initializeTimes returns expected default times", () => {
-  const expectedTimes = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+// test("initializeTimes returns expected default times", () => {
+//   const expectedTimes = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+//   const result = initializeTimes();
+//   expect(result).toEqual(expectedTimes);
+// });
+test("initializeTimes returns expected times for a fixed date", () => {
+  const fixedDate = new Date("2025-10-10");
+  const expectedTimes = fetchAPI(fixedDate);
+  // Setze fetchAPI temporär als Mock, falls nötig
+  jest.spyOn(global, "Date").mockImplementation(() => fixedDate);
   const result = initializeTimes();
   expect(result).toEqual(expectedTimes);
+  jest.restoreAllMocks();
 });
 
-// test("initializeTimes includes expected times", () => {
-//   const result = initializeTimes();
-//   expect(result).toEqual(
-//     expect.arrayContaining(["17:00", "18:00", "19:00", "20:00"])
-//   );
-//   // expect(result.length).toBeGreaterThanOrEqual(4);
-//   // expect(result).toContain("17:00");
-// });
-
-test("updateTimes returns the same state it receives", () => {
-  const currentState = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
-  const action = { type: "UPDATE", date: "2025-10-02" };
-  const result = updateTimes(currentState, action);
-  expect(result).toEqual(currentState);
-});
-
-// test("updateTimes includes all original times", () => {
-//   const currentState = ["17:00", "18:00", "19:00"];
+// test("updateTimes returns the same state it receives", () => {
+//   const currentState = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
 //   const action = { type: "UPDATE", date: "2025-10-02" };
 //   const result = updateTimes(currentState, action);
-//   expect(result).toEqual(expect.arrayContaining(currentState));
+//   expect(result).toEqual(currentState);
 // });
+
+test("updateTimes returns times for selected date", () => {
+  const state = [];
+  const selectedDate = "2025-10-10";
+  const action = { type: "UPDATE_TIMES", date: selectedDate };
+  const expectedTimes = fetchAPI(new Date(selectedDate));
+  const result = updateTimes(state, action);
+  expect(result).toEqual(expectedTimes);
+});
 
 test("BookingForm can be submitted by the user", () => {
   const mockTimes = ["17:00", "18:00", "19:00"];
@@ -71,7 +74,7 @@ test("BookingForm can be submitted by the user", () => {
     <BookingForm
       availableTimes={mockTimes}
       dispatch={mockDispatch}
-      onSubmit={mockSubmit}
+      submitForm={mockSubmit}
     />
   );
 
