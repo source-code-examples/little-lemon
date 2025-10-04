@@ -1,13 +1,37 @@
-// import App from "./App.js";
+import App from "./App.js";
 import { render, screen, fireEvent } from "@testing-library/react";
 import BookingForm from "./components/BookingForm";
 import { initializeTimes, updateTimes } from "./Main.jsx";
 import { fetchAPI } from "./api.js";
+// import { MemoryRouter } from "react-router-dom";
+
+// test("navigates to reservation page", () => {
+//   render(
+//     <MemoryRouter initialEntries={["/reservations"]}>
+//       <App />
+//     </MemoryRouter>
+//   );
+//   expect(screen.getByText(/choose date/i)).toBeInTheDocument();
+// });
 
 // test("renders learn react link", () => {
 //   render(<App />);
 //   const linkElement = screen.getByText("Homepage");
 //   expect(linkElement).toBeInTheDocument();
+// });
+
+// test("App renders homepage", () => {
+//   render(<App />);
+//   expect(screen.getByText(/homepage/i)).toBeInTheDocument();
+// });
+
+// test("navigates to confirmation page", () => {
+//   render(
+//     <MemoryRouter initialEntries={["/confirmation"]}>
+//       <App />
+//     </MemoryRouter>
+//   );
+//   expect(screen.getByText(/reservation confirmed/i)).toBeInTheDocument();
 // });
 
 const setup = () => {
