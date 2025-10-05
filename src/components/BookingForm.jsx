@@ -57,6 +57,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
 
   return (
     <form className="booking-form" onSubmit={handleSubmit}>
+      <h2>Reserve a Table</h2>
       <label htmlFor="booking-date">Choose Date:</label>
       <input
         type="date" // HTML5 validation
@@ -95,6 +96,8 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
         // placeholder={1}
         value={guests}
         onChange={handleGuestsChange}
+        aria-describedby="guest-error"
+        aria-invalid={guestError ? "true" : "false"}
       />
       {guestError && (
         <span style={{ color: "red", fontSize: "0.8em" }}>{guestError}</span>
@@ -113,6 +116,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
       </select>
 
       <input
+        aria-label="Submit reservation"
         type="submit"
         value="Make your Reservation"
         disabled={!isFormValid} // Only active if the form is valid

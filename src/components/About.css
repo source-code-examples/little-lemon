@@ -9,6 +9,7 @@
 }
 
 .about-title {
+  justify-self: start;
   color: var(--lemon-yellow);
   text-shadow: -1px -1px 0 black, -1px 1px 0 black;
   font-size: 40px;
@@ -17,6 +18,10 @@
 
 .about-location {
   font-size: 24px;
+}
+
+.about-text {
+  color: var(--black);
 }
 
 .about-images img {
@@ -48,7 +53,7 @@
   .about {
     grid-template-columns: 1fr;
     padding: 30px 10vw;
-    text-align: center;
+    /* text-align: center; */
   }
 
   .about-images {

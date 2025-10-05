@@ -1,0 +1,21 @@
+.confirmation-page {
+  margin: 120px 0;
+  align-items: center;
+  justify-self: center;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  background-color: var(--dark-green);
+  opacity: 0.8;
+  max-width: 100%;
+  width: 50%;
+  border: 1px solid var(--black);
+  border-radius: 16px;
+  text-shadow: -1px -1px 0 black, -1px 1px 0 black;
+}
+
+.confirmation-page,
+p {
+  color: var(--pure-white);
+}

@@ -14,7 +14,7 @@ header img {
 nav ul {
   display: flex;
   justify-content: space-between;
-  gap: 20px;
+  gap: 15px;
   list-style: none;
 }
 
@@ -63,6 +63,8 @@ header img {
 @media (max-width: 1020px) {
   header {
     padding: 20px 10vw;
+    /* margin-right: auto; */
+    /* width: 100%; */
   }
 }
 
@@ -73,6 +75,11 @@ header img {
 
   header img {
     width: 150px;
+  }
+
+  nav {
+    margin-right: 40px;
+    margin-left: -30px;
   }
 }
 
@@ -99,6 +106,7 @@ header img {
 
   nav {
     padding-top: 3vw;
+    margin-left: 20px;
   }
 }
 

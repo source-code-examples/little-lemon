@@ -2,7 +2,6 @@ import React from "react";
 import BookingForm from "./../components/BookingForm.jsx";
 import { useNavigate } from "react-router-dom";
 import { submitAPI } from "../api.js";
-// import Hero from "../components/Hero.jsx";
 
 const BookingPage = ({ availableTimes, dispatch }) => {
   const navigate = useNavigate();

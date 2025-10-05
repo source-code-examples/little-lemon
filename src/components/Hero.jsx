@@ -17,6 +17,7 @@ const Hero = () => {
         </div>
 
         <button
+          aria-label="Open Booking Page"
           className="hero-reserve-button"
           onClick={() => {
             const overlay = document.getElementById("loading-overlay");

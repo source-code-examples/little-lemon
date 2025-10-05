@@ -3,7 +3,7 @@
   grid-template-columns: 1fr 1fr;
   /* grid-template-columns: minmax(300px, 1fr) minmax(250px, 0.8fr); */
   align-items: center;
-  padding: 0 20vw;
+  padding: 0 25vw;
   gap: 20px;
   background-color: var(--dark-green);
   /* max-width: 1200px;
@@ -13,17 +13,24 @@
 .hero-title {
   color: var(--lemon-yellow);
   letter-spacing: 1.5px;
-  font-size: 36px;
+  font-size: 42px;
 }
 
 .hero-location,
 .hero-teaser {
   color: var(--white);
+  max-width: 350px;
 }
 
 .hero-reserve-button {
   max-width: 200px;
+  max-height: 55px;
   font-weight: bold;
+  transition: background-color 0.8s ease;
+}
+
+.hero-reserve-button:hover {
+  background-color: var(--peach);
 }
 
 .hero-content {
@@ -81,6 +88,12 @@ body.fade-out {
   transition: opacity 0.8s ease;
 }
 
+@media (max-width: 1224px) {
+  .hero-section {
+    padding: 0 15vw;
+  }
+}
+
 @media (max-width: 830px) {
   .hero-section {
     padding: 10px 10vw;
@@ -123,7 +136,15 @@ body.fade-out {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    /* align-self: center; */
     /* padding-top: 20px; */
+    width: 100%;
+  }
+
+  .hero-teaser,
+  .hero-location {
+    width: 300px;
+    align-self: center;
   }
 
   .hero-reserve-button {

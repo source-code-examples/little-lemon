@@ -4,6 +4,7 @@ import Hightlights from "../components/Highlights.jsx";
 import Testimonials from "../components/Testimonials.jsx";
 import About from "../components/About.js";
 import "./HomePage.css";
+import "./Pages.css";
 
 const Home = () => {
   return (
