@@ -15,6 +15,16 @@ A responsive and accessible single-page application for the fictional Little Lem
 
 ---
 
+## Live Demo
+
+Cloudflare Pages Deployment:  
+https://little-lemon-drt.pages.dev
+
+GitHub Repository:  
+https://github.com/wkleus/little-lemon
+
+---
+
 ## Tech Stack
 
 | Technology     | Purpose                 |
@@ -24,6 +34,7 @@ A responsive and accessible single-page application for the fictional Little Lem
 | CSS Modules    | Scoped styling          |
 | JavaScript ES6 | Logic and interactivity |
 | HTML5          | Semantic structure      |
+| Cloudflare     | Deployment              |
 
 ---
 
@@ -50,8 +61,17 @@ little-lemon/
 To run this project locally, follow these steps:
 
 ```bash
-git clone https://github.com/source-code-examples/little-lemon.git
+git clone https://github.com/wkleus/little-lemon.git
 cd little-lemon
 npm install
 npm start
 ```
+
+---
+
+## Deployment (Cloudflare Pages)
+
+This project is deployed using Cloudflare Pages.
+
+Build command: npm run build  
+Output directory: build
