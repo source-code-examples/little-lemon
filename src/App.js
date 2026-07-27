@@ -12,7 +12,7 @@ import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
-    <Router basename="/little-lemon">
+    <Router>
       <div className="App">
         <Header />
         <Routes>
