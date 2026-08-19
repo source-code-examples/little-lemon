@@ -1,9 +1,9 @@
 import React from "react";
 import "./Highlights.css";
 import deliveryVanIcon from "../assets/images/delivery-van.png";
-import gazpachoImage from "../assets/images/gazpacho.jpg";
-import mariscoImage from "../assets/images/marisco.jpg";
-import flanImage from "../assets/images/flan.jpg";
+import gazpachoImage from "../assets/images/gazpacho.webp";
+import mariscoImage from "../assets/images/marisco.webp";
+import flanImage from "../assets/images/flan.webp";
 
 const Hightlights = () => {
   return (
@@ -14,7 +14,15 @@ const Hightlights = () => {
       </div>
       <div className="cards">
         <div className="card">
-          <img src={gazpachoImage} alt="Gazpacho" className="card-image" />
+          <img
+            src={gazpachoImage}
+            alt="Gazpacho"
+            className="card-image"
+            loading="lazy"
+            width={300}
+            height={200}
+            decoding="async"
+          />
           <div className="card-header">
             <h3 className="card-title">Gazpacho</h3>
             <span className="card-price">€ 7.50</span>
@@ -33,7 +41,15 @@ const Hightlights = () => {
           </button>
         </div>
         <div className="card">
-          <img src={mariscoImage} alt="Marisco" className="card-image" />
+          <img
+            src={mariscoImage}
+            alt="Marisco"
+            className="card-image"
+            loading="lazy"
+            width={300}
+            height={200}
+            decoding="async"
+          />
           <div className="card-header">
             <h3 className="card-title">Marisco</h3>
             <span className="card-price">€ 14.90</span>
@@ -52,7 +68,15 @@ const Hightlights = () => {
           </button>
         </div>
         <div className="card">
-          <img src={flanImage} alt="Flan" className="card-image" />
+          <img
+            src={flanImage}
+            alt="Flan"
+            className="card-image"
+            loading="lazy"
+            width={300}
+            height={200}
+            decoding="async"
+          />
           <div className="card-header">
             <h3 className="card-title">Flan</h3>
             <span className="card-price">€ 8.50</span>

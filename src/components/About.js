@@ -1,6 +1,6 @@
 import React from "react";
-import chefImage from "../assets/images/restaurant-chef.jpg";
-import chefsImage from "../assets/images/restaurant-chefs.jpg";
+import chefImage from "../assets/images/restaurant-chef.webp";
+import chefsImage from "../assets/images/restaurant-chefs.webp";
 import "./About.css";
 
 const About = () => {
@@ -21,11 +21,19 @@ const About = () => {
           src={chefsImage}
           alt="Two chefs are preparing the food."
           className="chefs-image"
+          loading="lazy"
+          width={300}
+          height={400}
+          decoding="async"
         />
         <img
           src={chefImage}
           alt="A chef is preparing the food."
           className="chef-image"
+          loading="lazy"
+          width={300}
+          height={400}
+          decoding="async"
         />
       </div>
     </section>

@@ -58,7 +58,14 @@ const Testimonials = () => {
               })}
             </div>
             <div className="info">
-              <img src={review.image} alt={`Pic of ${review.name}`} />
+              <img
+                src={review.image}
+                alt={`Pic of ${review.name}`}
+                loading="lazy"
+                width={60}
+                height={60}
+                decoding="async"
+              />
               <aside>{review.name}</aside>
             </div>
             <p className="text">"{review.text}"</p>

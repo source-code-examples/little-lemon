@@ -1,6 +1,6 @@
 import React from "react";
 import "./Hero.css";
-import restaurantImage from "../assets/images/waiter-serves.jpg";
+import restaurantImage from "../assets/images/waiter-serves.webp";
 
 const Hero = () => {
   return (
@@ -35,8 +35,11 @@ const Hero = () => {
       </div>
       <img
         src={restaurantImage}
-        alt="Little Lemon Restaurant - A
-        waiter serves food"
+        alt="Little Lemon Restaurant - A waiter serves food"
+        width={400}
+        height={500}
+        fetchPriority="high"
+        decoding="async"
       />
     </section>
   );
